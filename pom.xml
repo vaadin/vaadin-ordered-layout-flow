@@ -30,7 +30,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.webjars.bower</groupId>
+            <groupId>org.webjars.bowergithub.vaadin</groupId>
             <artifactId>vaadin-ordered-layout</artifactId>
             <!-- Remove this override once there is alpha4 available in vaadin-webjars-bom,
                  and the component has been fixed to the web component changes -->

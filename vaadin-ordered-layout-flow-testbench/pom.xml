@@ -10,7 +10,7 @@
         <version>2.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>vaadin-ordered-layout-flow-testbench</artifactId>
+    <artifactId>vaadin-ordered-layout-testbench</artifactId>
     <packaging>jar</packaging>
 
     <name>Vaadin Ordered Layouts Testbench API</name>

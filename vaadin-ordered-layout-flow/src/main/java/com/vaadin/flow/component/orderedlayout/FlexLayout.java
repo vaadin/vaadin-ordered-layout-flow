@@ -98,6 +98,7 @@ public class FlexLayout extends Component
     }
 
     /**
+     * @deprecated Rename setWrapMode to setFlexWrap
      * Gets the {@link WrapMode} used by this layout.
      * <p>
      * The default flex wrap mode is {@link WrapMode#NOWRAP}.
@@ -128,6 +129,7 @@ public class FlexLayout extends Component
     }
 
     /**
+     * @deprecated Rename getWrapMode to getFlexWrap
      * Gets the current flex wrap mode of the layout.
      * <p>
      * The default flex wrap mode is {@link WrapMode#NOWRAP}.

@@ -1,6 +1,9 @@
 package com.vaadin.flow.component.orderedlayout.it;
 
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.NativeButton;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.orderedlayout.demo.AbstractLayout;
@@ -40,6 +43,34 @@ public class OrderedLayoutITView extends Div {
                 AbstractLayout.createToggleThemeButton(
                         horizontalLayoutWithSpacing, "spacing-xl"));
 
-        add(verticalLayoutWithSpacing, horizontalLayoutWithSpacing);
+
+        FlexLayout flayout = new FlexLayout();
+        flayout.setId("flex-layout");
+        NativeButton noWrap = new NativeButton("no-wrap", e -> {
+            flayout.setFlexWrap(FlexLayout.WrapMode.NOWRAP);
+        });
+        NativeButton wrap = new NativeButton("wrap", e -> {
+            flayout.setFlexWrap(FlexLayout.WrapMode.WRAP);
+        });
+        NativeButton wrapReverse = new NativeButton("wrap-reverse", e -> {
+            flayout.setFlexWrap(FlexLayout.WrapMode.WRAP_REVERSE);
+        });
+        NativeButton wrapModeText = new NativeButton("wrap-mode");
+        wrapModeText.setId("text-wrap-mode");
+        NativeButton getWrapMode = new NativeButton("Wrap mode", e -> {
+            wrapModeText.setText(String.valueOf(flayout.getFlexWrap()));
+        });
+        noWrap.setId("no-wrap");
+        wrap.setId("wrap");
+        wrapReverse.setId("wrap-reverse");
+        getWrapMode.setId("wrap-mode");
+        flayout.add(
+                noWrap,
+                wrap,
+                wrapReverse,
+                getWrapMode,
+                wrapModeText);
+
+        add(verticalLayoutWithSpacing, horizontalLayoutWithSpacing, flayout);
     }
 }

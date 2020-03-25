@@ -105,7 +105,20 @@ public class FlexLayout extends Component
      * @param wrapMode the flex wrap mode of the layout, never
      *                     <code>null</code>
      */
+    @Deprecated
     public void setWrapMode(WrapMode wrapMode) {
+        this.setFlexWrap(wrapMode);
+    }
+
+    /**
+     * Gets the {@link WrapMode} used by this layout.
+     * <p>
+     * The default flex wrap mode is {@link WrapMode#NOWRAP}.
+     *
+     * @param wrapMode the flex wrap mode of the layout, never
+     *                     <code>null</code>
+     */
+    public void setFlexWrap(WrapMode wrapMode) {
         if (wrapMode == null) {
             throw new IllegalArgumentException(
                     "The 'wrapMode' argument can not be null");
@@ -122,7 +135,20 @@ public class FlexLayout extends Component
      * @return the flex wrap mode used by the layout, never
      * <code>null</code>
      */
+    @Deprecated
     public WrapMode getWrapMode() {
+        return this.getFlexWrap();
+    }
+
+    /**
+     * Gets the current flex wrap mode of the layout.
+     * <p>
+     * The default flex wrap mode is {@link WrapMode#NOWRAP}.
+     *
+     * @return the flex wrap mode used by the layout, never
+     * <code>null</code>
+     */
+    public WrapMode getFlexWrap() {
         return WrapMode.toWrapMode(
                 getElement().getStyle()
                         .get(FlexConstants.FLEX_WRAP_CSS_PROPERTY),

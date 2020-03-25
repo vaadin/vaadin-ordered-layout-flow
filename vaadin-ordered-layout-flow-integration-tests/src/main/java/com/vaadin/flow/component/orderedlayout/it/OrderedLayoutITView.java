@@ -46,11 +46,11 @@ public class OrderedLayoutITView extends Div {
         FlexLayout flayout = new FlexLayout();
         flayout.setId("flex-layout");
         NativeButton noWrap = new NativeButton("no-wrap",
-                e -> flayout.setFlexWrap(FlexLayout.WrapMode.NOWRAP));
+                e -> flayout.setFlexWrap(FlexLayout.FlexWrap.NOWRAP));
         NativeButton wrap = new NativeButton("wrap",
-                e -> flayout.setFlexWrap(FlexLayout.WrapMode.WRAP));
+                e -> flayout.setFlexWrap(FlexLayout.FlexWrap.WRAP));
         NativeButton wrapReverse = new NativeButton("wrap-reverse",
-                e -> flayout.setFlexWrap(FlexLayout.WrapMode.WRAP_REVERSE));
+                e -> flayout.setFlexWrap(FlexLayout.FlexWrap.WRAP_REVERSE));
         NativeButton wrapModeText = new NativeButton("wrap-mode");
         wrapModeText.setId("text-wrap-mode");
         NativeButton getWrapMode = new NativeButton("Wrap mode",

@@ -36,9 +36,11 @@ public class FlexLayout extends Component
         implements FlexComponent, ClickNotifier<FlexLayout> {
 
     /**
+     * @deprecated Use {@link FlexWrap} instead
      * Possible values for the {@code flex-wrap} CSS property, which determines how the elements inside the layout
      * should behave when they don't fit inside the layout.
      */
+    @Deprecated
     public enum WrapMode {
 
         /**
@@ -77,6 +79,44 @@ public class FlexLayout extends Component
 
     }
 
+    public enum FlexWrap {
+
+        /**
+         * If the items use up too much space they will overflow.
+         */
+        NOWRAP("nowrap"),
+
+        /**
+         * If items are not able to fit into a single row they are allowed to wrap into a follow up line.
+         *
+         * */
+        WRAP("wrap"),
+
+        /**
+         * If items are not able to fit into a single row they are allowed to wrap into a follow up line.
+         *  Additionally the order of the items will be reversed.
+         */
+        WRAP_REVERSE("wrap-reverse");
+
+        private final String flexValue;
+
+        FlexWrap(String flexValue) {
+            this.flexValue = flexValue;
+        }
+
+        String getFlexValue() {
+            return flexValue;
+        }
+
+        static FlexWrap toWrapMode(String flexValue, FlexWrap defaultValue) {
+            return Arrays.stream(values())
+                    .filter(flexWrap -> flexWrap.getFlexValue()
+                            .equals(flexValue))
+                    .findFirst().orElse(defaultValue);
+        }
+
+    }
+
     /**
      * Default constructor. Creates an empty layout.
      */
@@ -98,7 +138,7 @@ public class FlexLayout extends Component
     }
 
     /**
-     * @deprecated Rename setWrapMode to setFlexWrap
+     * @deprecated Use {@link #setFlexWrap(FlexWrap)} instead
      * Gets the {@link WrapMode} used by this layout.
      * <p>
      * The default flex wrap mode is {@link WrapMode#NOWRAP}.
@@ -108,18 +148,6 @@ public class FlexLayout extends Component
      */
     @Deprecated
     public void setWrapMode(WrapMode wrapMode) {
-        this.setFlexWrap(wrapMode);
-    }
-
-    /**
-     * Gets the {@link WrapMode} used by this layout.
-     * <p>
-     * The default flex wrap mode is {@link WrapMode#NOWRAP}.
-     *
-     * @param wrapMode the flex wrap mode of the layout, never
-     *                     <code>null</code>
-     */
-    public void setFlexWrap(WrapMode wrapMode) {
         if (wrapMode == null) {
             throw new IllegalArgumentException(
                     "The 'wrapMode' argument can not be null");
@@ -129,7 +157,24 @@ public class FlexLayout extends Component
     }
 
     /**
-     * @deprecated Rename getWrapMode to getFlexWrap
+     * Gets the {@link FlexWrap} used by this layout.
+     * <p>
+     * The default flex wrap mode is {@link FlexWrap#NOWRAP}.
+     *
+     * @param flexWrap the flex wrap mode of the layout, never
+     *                     <code>null</code>
+     */
+    public void setFlexWrap(FlexWrap flexWrap) {
+        if (flexWrap == null) {
+            throw new IllegalArgumentException(
+                    "The 'wrapMode' argument can not be null");
+        }
+        getElement().getStyle().set(FlexConstants.FLEX_WRAP_CSS_PROPERTY,
+                flexWrap.getFlexValue());
+    }
+
+    /**
+     * @deprecated Use {@link #getFlexWrap()} instead
      * Gets the current flex wrap mode of the layout.
      * <p>
      * The default flex wrap mode is {@link WrapMode#NOWRAP}.
@@ -139,22 +184,25 @@ public class FlexLayout extends Component
      */
     @Deprecated
     public WrapMode getWrapMode() {
-        return this.getFlexWrap();
+        return WrapMode.toWrapMode(
+                getElement().getStyle()
+                        .get(FlexConstants.FLEX_WRAP_CSS_PROPERTY),
+                WrapMode.NOWRAP);
     }
 
     /**
      * Gets the current flex wrap mode of the layout.
      * <p>
-     * The default flex wrap mode is {@link WrapMode#NOWRAP}.
+     * The default flex wrap mode is {@link FlexWrap#NOWRAP}.
      *
      * @return the flex wrap mode used by the layout, never
      * <code>null</code>
      */
-    public WrapMode getFlexWrap() {
-        return WrapMode.toWrapMode(
+    public FlexWrap getFlexWrap() {
+        return FlexWrap.toWrapMode(
                 getElement().getStyle()
                         .get(FlexConstants.FLEX_WRAP_CSS_PROPERTY),
-                WrapMode.NOWRAP);
+                FlexWrap.NOWRAP);
     }
 
 }

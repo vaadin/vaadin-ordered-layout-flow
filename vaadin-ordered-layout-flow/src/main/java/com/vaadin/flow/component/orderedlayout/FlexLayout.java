@@ -79,6 +79,10 @@ public class FlexLayout extends Component
 
     }
 
+    /**
+     * Possible values for the {@code flex-wrap} CSS property, which determines how the elements inside the layout
+     * should behave when they don't fit inside the layout.
+     */
     public enum FlexWrap {
 
         /**
@@ -108,7 +112,7 @@ public class FlexLayout extends Component
             return flexValue;
         }
 
-        static FlexWrap toWrapMode(String flexValue, FlexWrap defaultValue) {
+        static FlexWrap toFlexWrap(String flexValue, FlexWrap defaultValue) {
             return Arrays.stream(values())
                     .filter(flexWrap -> flexWrap.getFlexValue()
                             .equals(flexValue))
@@ -159,15 +163,15 @@ public class FlexLayout extends Component
     /**
      * Gets the {@link FlexWrap} used by this layout.
      * <p>
-     * The default flex wrap mode is {@link FlexWrap#NOWRAP}.
+     * The default flex wrap is {@link FlexWrap#NOWRAP}.
      *
-     * @param flexWrap the flex wrap mode of the layout, never
+     * @param flexWrap the flex wrap of the layout, never
      *                     <code>null</code>
      */
     public void setFlexWrap(FlexWrap flexWrap) {
         if (flexWrap == null) {
             throw new IllegalArgumentException(
-                    "The 'wrapMode' argument can not be null");
+                    "The 'flexWrap' argument can not be null");
         }
         getElement().getStyle().set(FlexConstants.FLEX_WRAP_CSS_PROPERTY,
                 flexWrap.getFlexValue());
@@ -191,15 +195,15 @@ public class FlexLayout extends Component
     }
 
     /**
-     * Gets the current flex wrap mode of the layout.
+     * Gets the current flex wrap of the layout.
      * <p>
-     * The default flex wrap mode is {@link FlexWrap#NOWRAP}.
+     * The default flex wrap is {@link FlexWrap#NOWRAP}.
      *
-     * @return the flex wrap mode used by the layout, never
+     * @return the flex wrap used by the layout, never
      * <code>null</code>
      */
     public FlexWrap getFlexWrap() {
-        return FlexWrap.toWrapMode(
+        return FlexWrap.toFlexWrap(
                 getElement().getStyle()
                         .get(FlexConstants.FLEX_WRAP_CSS_PROPERTY),
                 FlexWrap.NOWRAP);

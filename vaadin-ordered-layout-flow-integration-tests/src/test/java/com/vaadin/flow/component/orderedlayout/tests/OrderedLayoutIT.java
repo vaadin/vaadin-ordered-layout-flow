@@ -35,9 +35,9 @@ public class OrderedLayoutIT extends AbstractComponentIT {
                 .findElement(By.id("wrap"));
         WebElement btnWrapReverse = fLayout
                 .findElement(By.id("wrap-reverse"));
-        WebElement btnGetWrapMode = fLayout
-                .findElement(By.id("wrap-mode"));
-        WebElement wrapModeText = findElement(By.id("text-wrap-mode"));
+        WebElement getFlexWrapBtn = fLayout
+                .findElement(By.id("wrap-btn"));
+        WebElement flexWrapDisplay = findElement(By.id("flex-wrap-display"));
 
         btnNoWrap.click();
         Assert.assertEquals("nowrap",
@@ -51,8 +51,8 @@ public class OrderedLayoutIT extends AbstractComponentIT {
         Assert.assertEquals("wrap-reverse",
                 fLayout.getCssValue("flex-wrap"));
 
-        btnGetWrapMode.click();
-        Assert.assertEquals("WRAP_REVERSE", wrapModeText.getText());
+        getFlexWrapBtn.click();
+        Assert.assertEquals("WRAP_REVERSE", flexWrapDisplay.getText());
     }
 
     private void testSpacing(WebElement layout) {

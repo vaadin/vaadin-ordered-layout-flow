@@ -98,6 +98,8 @@ public class OrderedLayoutView extends AbstractLayout {
                             .setAlignContent(alignment));
                     buttons.add(button);
                 });
+
+        add(layout, buttons);
         // end-source-example
 
         layout.setId("flex-layout-with-alignment-content");
@@ -128,6 +130,8 @@ public class OrderedLayoutView extends AbstractLayout {
                     .setFlexBasis(width, component1));
             buttons.add(button);
         });
+
+        add(layout, buttons);
         // end-source-example
 
         layout.setId("flex-layout-with-flex-basis");
@@ -157,6 +161,8 @@ public class OrderedLayoutView extends AbstractLayout {
                     .setFlexDirection(direction));
             buttons.add(button);
         });
+
+        add(layout, buttons);
         // end-source-example
 
         layout.setId("flex-layout-with-flex-direction");
@@ -188,6 +194,8 @@ public class OrderedLayoutView extends AbstractLayout {
                     .setFlexShrink(shrink, component1));
             buttons.add(button);
         });
+
+        add(layout, buttons);
         // end-source-example
 
         layout.setId("flex-layout-with-flex-shrink");
@@ -213,6 +221,8 @@ public class OrderedLayoutView extends AbstractLayout {
         layout.setOrder(0, component3);
         layout.setOrder(1, component1);
         layout.setOrder(2, component2);
+
+        add(layout);
         // end-source-example
 
         layout.setId("flex-layout-with-ordered-items");
@@ -239,6 +249,8 @@ public class OrderedLayoutView extends AbstractLayout {
         layout.setMargin(true);
         // just a demonstration of the API, by default the spacing is on
         layout.setSpacing(true);
+
+        add(layout, themeSettings);
         // end-source-example
 
         layout.setId("default-layout");
@@ -270,6 +282,8 @@ public class OrderedLayoutView extends AbstractLayout {
         layout.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);
 
         layout.add(component1, component2, component3);
+
+        add(layout, justifyContentMode);
         // end-source-example
 
         component2.getElement().setText("Component 2 with long text");
@@ -308,6 +322,8 @@ public class OrderedLayoutView extends AbstractLayout {
         Component component3 = createComponent(3, "#37474F");
 
         layout.add(component1, component2, component3);
+
+        add(layout, alignments);
         // end-source-example
 
         component2.getElement().getStyle().set("fontSize", "24px");
@@ -353,6 +369,8 @@ public class OrderedLayoutView extends AbstractLayout {
                 component4);
 
         layout.add(component1, component2, component3, component4);
+
+        add(layout);
         // end-source-example
 
         component1.setId("start-aligned");
@@ -382,6 +400,8 @@ public class OrderedLayoutView extends AbstractLayout {
         layout.setFlexGrow(0.5, component3);
 
         layout.add(component1, component2, component3);
+
+        add(layout);
         // end-source-example
 
         component1.setId("ratio-1");
@@ -404,6 +424,7 @@ public class OrderedLayoutView extends AbstractLayout {
         layout.add(component);
         layout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
+        add(layout);
         // end-source-example
 
         component.setId("center");
@@ -432,6 +453,8 @@ public class OrderedLayoutView extends AbstractLayout {
         Div component2 = createComponent(2, "#546E7A");
         component2.setWidth("50%");
         layout.add(component1, component2);
+
+        add(layout, createBoxSizingButtons(layout, layout.getId().get()));
         // end-source-example
 
         layout.setId("horizontal-layout-with-box-sizing");
@@ -451,6 +474,8 @@ public class OrderedLayoutView extends AbstractLayout {
         Div component3 = createLoremIpsum();
 
         layout.addAndExpand(component1, component2, component3);
+
+        add(layout);
         // end-source-example
 
         layout.setId("horizontal-layout-with-expanding-content");
@@ -479,6 +504,8 @@ public class OrderedLayoutView extends AbstractLayout {
         layout.setMargin(true);
         // just a demonstration of the API, by default the spacing is on
         layout.setSpacing(true);
+
+        add(layout, themeSettings);
         // end-source-example
 
         layout.setId("default-layout");
@@ -510,6 +537,8 @@ public class OrderedLayoutView extends AbstractLayout {
         Component component3 = createComponent(3, "#37474F");
 
         layout.add(component1, component2, component3);
+
+        add(layout, justifyContentMode);
         // end-source-example
 
         component2.getElement().setProperty("innerHTML",
@@ -547,6 +576,8 @@ public class OrderedLayoutView extends AbstractLayout {
         Component component3 = createComponent(3, "#37474F");
 
         layout.add(component1, component2, component3);
+
+        add(layout, alignments);
         // end-source-example
 
         component2.getElement().setText("Component 2 with long text");
@@ -590,6 +621,8 @@ public class OrderedLayoutView extends AbstractLayout {
                 component4);
 
         layout.add(component1, component2, component3, component4);
+
+        add(layout);
         // end-source-example
 
         component1.setId("start-aligned");
@@ -621,6 +654,8 @@ public class OrderedLayoutView extends AbstractLayout {
         layout.setFlexGrow(0.5, component3);
 
         layout.add(component1, component2, component3);
+
+        add(layout);
         // end-source-example
 
         component1.setId("ratio-1");
@@ -644,6 +679,7 @@ public class OrderedLayoutView extends AbstractLayout {
                 component);
         layout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
+        add(layout);
         // end-source-example
 
         component.setId("center");
@@ -672,6 +708,8 @@ public class OrderedLayoutView extends AbstractLayout {
         Div component2 = createComponent(2, "#546E7A");
         component2.setHeight("50%");
         layout.add(component1, component2);
+
+        add(layout, createBoxSizingButtons(layout, layout.getId().get()));
         // end-source-example
 
         layout.setId("vertical-layout-with-box-sizing");
@@ -691,6 +729,8 @@ public class OrderedLayoutView extends AbstractLayout {
         Div component3 = createLoremIpsum();
 
         layout.addAndExpand(component1, component2, component3);
+
+        add(layout);
         // end-source-example
 
         layout.setId("vertical-layout-with-expanding-content");
@@ -710,6 +750,8 @@ public class OrderedLayoutView extends AbstractLayout {
         Div content = createLoremIpsum();
 
         scroller.setContent(content);
+
+        add(scroller);
         // end-source-example
 
         scroller.setId("small-scroller-large-content");
@@ -739,6 +781,8 @@ public class OrderedLayoutView extends AbstractLayout {
         }
 
         scroller.setContent(content);
+
+        add(scroller);
         // end-source-example
 
         scroller.setId("scroller-with-vertical-layout");
